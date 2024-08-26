@@ -1,0 +1,23 @@
+{
+  "name": "use-ai-lib",
+  "version": "0.0.0",
+  "description": "A React hooks library for building AI-powered apps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmAzing129/use-ai-lib.git"
+  },
+  "keywords": [
+    "ai",
+    "react",
+    "hooks"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AmAzing129/use-ai-lib/issues"
+  },
+  "homepage": "https://github.com/AmAzing129/use-ai-lib#readme"
+}
