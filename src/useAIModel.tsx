@@ -1,4 +1,6 @@
 import type { LanguageModel, CoreMessage } from 'ai';
+import { generateText } from 'ai';
+import { useEffect } from 'react';
 
 interface Options extends Prompt {
   schema?: any;
@@ -20,8 +22,21 @@ type Prompt = {
   messages?: Array<CoreMessage>;
 };
 
-const useAIModel = (model: LanguageModel, options?: Options) => {
-  // TODO
-};
+export const useAIModel = (model: LanguageModel, options?: Options) => {
+  let genFunc = generateText;
 
-export default useAIModel;
+  useEffect(() => {
+    // genFunc({
+    //   model,
+    //   prompt: options.prompt,
+    // });
+  }, []);
+
+  return {
+    generate: (messages: Array<CoreMessage>) =>
+      genFunc({
+        model,
+        messages: messages || options.messages,
+      }),
+  };
+};

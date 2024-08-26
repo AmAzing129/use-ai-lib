@@ -18,8 +18,12 @@
     "ai": "^3.3.17"
   },
   "devDependencies": {
+    "@ant-design/pro-chat": "^1.15.2",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
+    "antd": "^5.20.2",
+    "antd-style": "^3.6.2",
+    "chrome-ai": "^1.11.0",
     "microbundle": "^0.15.1",
     "next": "^14.2.6",
     "react": "^18.3.1",
@@ -41,7 +45,7 @@
   },
   "homepage": "https://github.com/AmAzing129/use-ai-lib#readme",
   "engines": {
-    "node": "20"
+    "node": ">=20"
   },
   "packageManager": "pnpm@9.8.0+sha512.8e4c3550fb500e808dbc30bb0ce4dd1eb614e30b1c55245f211591ec2cdf9c611cabd34e1364b42f564bd54b3945ed0f49d61d1bbf2ec9bd74b866fcdc723276"
 }

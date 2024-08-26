@@ -5,6 +5,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "paths": {
+      "use-ai-lib": ["./src/index.ts"]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
