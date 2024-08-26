@@ -15,7 +15,9 @@
     "demo": "next dev"
   },
   "dependencies": {
-    "ai": "^3.3.17"
+    "@ai-sdk/ui-utils": "^0.0.38",
+    "ai": "^3.3.17",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@ant-design/pro-chat": "^1.15.2",
@@ -23,7 +25,7 @@
     "@types/react-dom": "^18.3.0",
     "antd": "^5.20.2",
     "antd-style": "^3.6.2",
-    "chrome-ai": "^1.11.0",
+    "chrome-ai": "^1.11.1",
     "microbundle": "^0.15.1",
     "next": "^14.2.6",
     "react": "^18.3.1",

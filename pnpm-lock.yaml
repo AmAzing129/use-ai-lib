@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@ai-sdk/ui-utils':
+        specifier: ^0.0.38
+        version: 0.0.38(zod@3.23.8)
       ai:
         specifier: ^3.3.17
         version: 3.3.17(react@18.3.1)(sswr@2.1.0(svelte@4.2.19))(svelte@4.2.19)(vue@3.4.38(typescript@5.5.4))(zod@3.23.8)
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@ant-design/pro-chat':
         specifier: ^1.15.2
@@ -28,8 +34,8 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       chrome-ai:
-        specifier: ^1.11.0
-        version: 1.11.0
+        specifier: ^1.11.1
+        version: 1.11.1
       microbundle:
         specifier: ^0.15.1
         version: 0.15.1
@@ -1561,8 +1567,8 @@ packages:
   character-entities@2.0.2:
     resolution: {integrity: sha512-shx7oQ0Awen/BRIdkjkvz54PnEEI/EjwXDSIZp86/KKdbafHh1Df/RYGBhn4hbe2+uKC9FnT5UCEdyPz3ai9hQ==}
 
-  chrome-ai@1.11.0:
-    resolution: {integrity: sha512-KQ5ohyrYDB46xP/GL982Pym77jM0jgVUbEtu56RxAiSKjFNo/WWiBMkHd+PK0orjn1dcOyzjrjv8LJQHDa7uOA==}
+  chrome-ai@1.11.1:
+    resolution: {integrity: sha512-d2JNIjdE5HtKSbUZf17BBeDLts/8S+MGOBPSDB0vUXW/B/7ZVMJWq5ivvMmSJt82gszvuw/T1RR/eq42GYXlOQ==}
 
   classcat@5.0.5:
     resolution: {integrity: sha512-JhZUT7JFcQy/EzW605k/ktHtncoo9vnyW/2GspNYwFlN1C/WmjuV/xtS04e9SOkL2sTdw0VAZ2UGCcQ9lR6p6w==}
@@ -5868,7 +5874,7 @@ snapshots:
 
   character-entities@2.0.2: {}
 
-  chrome-ai@1.11.0:
+  chrome-ai@1.11.1:
     dependencies:
       '@ai-sdk/provider': 0.0.21
       '@mediapipe/tasks-genai': 0.10.14

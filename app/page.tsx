@@ -15,10 +15,7 @@ export default function Home() {
   const [showComponent, setShowComponent] = useState(false);
   useEffect(() => setShowComponent(true), []);
 
-  // @ts-ignore
-  const { generate } = useAIModel(model, {
-    prompt: '你好',
-  });
+  useAIModel(model);
 
   return (
     <div
@@ -37,8 +34,8 @@ export default function Home() {
           }
           request={async (messages) => {
             // @ts-ignore
-            const res = await generate(messages);
-            return new Response(res.text);
+            // const res = await generate(messages);
+            // return new Response(res.text);
           }}
         />
       )}

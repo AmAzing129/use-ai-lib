@@ -1,10 +1,15 @@
 import type { LanguageModel, CoreMessage } from 'ai';
-import { generateText } from 'ai';
-import { useEffect } from 'react';
+import { generateText, streamText, streamObject, generateObject } from 'ai';
+import type { Schema, DeepPartial } from '@ai-sdk/ui-utils';
+import { useEffect, useState } from 'react';
+import { z } from 'zod';
 
-interface Options extends Prompt {
-  schema?: any;
-  onStreaming?: (data: any) => void;
+interface Options<D> extends Prompt {
+  deps?: any[];
+  schema?: z.Schema<D, z.ZodTypeDef, D> | Schema<D>;
+  stream?: boolean;
+  onSuccess?: (data: DeepPartial<D> | string | D) => void | boolean;
+  enabled?: boolean;
 }
 
 type Prompt = {
@@ -22,21 +27,74 @@ type Prompt = {
   messages?: Array<CoreMessage>;
 };
 
-export const useAIModel = (model: LanguageModel, options?: Options) => {
-  let genFunc = generateText;
+export const useAIModel = <D = string,>(
+  model: LanguageModel,
+  options: Options<D> = {}
+) => {
+  const { schema, onSuccess, stream, deps, enabled, ...prompt } = options;
+
+  const [data, setData] = useState<D>();
+
+  // TODO: get model from context
+
+  // TODO: add middleware if model is a request
 
   useEffect(() => {
-    // genFunc({
-    //   model,
-    //   prompt: options.prompt,
-    // });
-  }, []);
+    if (!enabled) {
+      return;
+    }
+
+    // No input
+    if (!prompt || (!prompt.prompt && !prompt.messages)) {
+      return;
+    }
+
+    if (schema) {
+      if (stream) {
+        streamObject({
+          model,
+          schema,
+          ...prompt,
+        }).then(async ({ partialObjectStream }) => {
+          for await (const partialObject of partialObjectStream) {
+            onSuccess?.(partialObject);
+          }
+        });
+      } else {
+        generateObject({
+          model,
+          schema,
+          ...prompt,
+        }).then(({ object }) => {
+          setData(object);
+          onSuccess?.(object);
+        });
+      }
+    } else {
+      if (stream) {
+        streamText({
+          model,
+          ...prompt,
+        }).then(async ({ textStream }) => {
+          for await (const textPart of textStream) {
+            onSuccess?.(textPart);
+          }
+        });
+      } else {
+        generateText({
+          model,
+          ...prompt,
+        }).then(({ text }) => {
+          // @ts-ignore FIXME
+          setData(text);
+          onSuccess?.(text);
+        });
+      }
+    }
+    // TODO handle deps re-render
+  }, [prompt.prompt, prompt.messages, enabled, stream, deps]);
 
   return {
-    generate: (messages: Array<CoreMessage>) =>
-      genFunc({
-        model,
-        messages: messages || options.messages,
-      }),
+    data,
   };
 };
