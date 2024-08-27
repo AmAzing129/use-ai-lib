@@ -26,7 +26,7 @@ importers:
         version: 0.0.54(zod@3.23.8)
       '@ant-design/pro-chat':
         specifier: ^1.15.2
-        version: 1.15.2(@types/react@18.3.4)(antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 1.15.2(@types/react@18.3.4)(antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/react':
         specifier: ^18.3.4
         version: 18.3.4
@@ -35,10 +35,10 @@ importers:
         version: 18.3.0
       antd:
         specifier: ^5.20.2
-        version: 5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       antd-style:
         specifier: ^3.6.2
-        version: 3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.6.2(@types/react@18.3.4)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       chrome-ai:
         specifier: ^1.11.1
         version: 1.11.1
@@ -1437,8 +1437,8 @@ packages:
       antd: '>=5.8.1'
       react: '>=18'
 
-  antd@5.20.2:
-    resolution: {integrity: sha512-9d6Bs5ZKIV+JhB0eD7KxYnIfnhUh86kNtTGIuNiIxHFUhbuyT1DXN2SuMksDmtSfuRYZ82/C4hq+OJjWNNbmHg==}
+  antd@5.20.3:
+    resolution: {integrity: sha512-v2s5LJlhuccIKLT17ESXQDkiQJdPK4jXg4x2pmSSRlrKXAxfftn8Zhd/7pdF3qR3OkwheQpSRjynrNZKp9Tgkg==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -3992,15 +3992,15 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@ant-design/pro-chat@1.15.2(@types/react@18.3.4)(antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@ant-design/pro-chat@1.15.2(@types/react@18.3.4)(antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ant-design/icons': 5.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@ant-design/pro-editor': 1.2.1(@emotion/react@11.13.3(@types/react@18.3.4)(react@18.3.1))(@types/react@18.3.4)(antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@ant-design/pro-editor': 1.2.1(@emotion/react@11.13.3(@types/react@18.3.4)(react@18.3.1))(@types/react@18.3.4)(antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@babel/runtime': 7.25.4
       '@emotion/react': 11.13.3(@types/react@18.3.4)(react@18.3.1)
       '@testing-library/jest-dom': 6.5.0
-      antd: 5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      antd-style: 3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      antd: 5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      antd-style: 3.6.2(@types/react@18.3.4)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       copy-to-clipboard: 3.3.3
       dayjs: 1.11.13
       emoji-regex: 10.3.0
@@ -4023,7 +4023,7 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@ant-design/pro-editor@1.2.1(@emotion/react@11.13.3(@types/react@18.3.4)(react@18.3.1))(@types/react@18.3.4)(antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@ant-design/pro-editor@1.2.1(@emotion/react@11.13.3(@types/react@18.3.4)(react@18.3.1))(@types/react@18.3.4)(antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ant-design/icons': 5.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@babel/runtime': 7.25.4
@@ -4034,8 +4034,8 @@ snapshots:
       '@emotion/styled': 11.13.0(@emotion/react@11.13.3(@types/react@18.3.4)(react@18.3.1))(@types/react@18.3.4)(react@18.3.1)
       '@floating-ui/react': 0.24.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ahooks: 3.7.8(react@18.3.1)
-      antd: 5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      antd-style: 3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      antd: 5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      antd-style: 3.6.2(@types/react@18.3.4)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames: 2.5.1
       color: 4.2.3
       copy-to-clipboard: 3.3.3
@@ -5669,7 +5669,7 @@ snapshots:
     dependencies:
       color-convert: 2.0.1
 
-  antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  antd-style@3.6.2(@types/react@18.3.4)(antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@ant-design/cssinjs': 1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@babel/runtime': 7.25.4
@@ -5679,7 +5679,7 @@ snapshots:
       '@emotion/serialize': 1.3.1
       '@emotion/server': 11.11.0(@emotion/css@11.13.0)
       '@emotion/utils': 1.4.0
-      antd: 5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      antd: 5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       use-merge-value: 1.2.0(react@18.3.1)
     transitivePeerDependencies:
@@ -5687,7 +5687,7 @@ snapshots:
       - react-dom
       - supports-color
 
-  antd@5.20.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  antd@5.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@ant-design/colors': 7.1.0
       '@ant-design/cssinjs': 1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
