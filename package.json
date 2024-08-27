@@ -1,13 +1,14 @@
 {
   "name": "use-ai-lib",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.4",
   "description": "A React hooks library for building AI-powered apps.",
   "type": "module",
   "source": "src/index.ts",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.module.js",
   "exports": {
-    "default": "./dist/index.modern.js"
+    "default": "./dist/index.modern.js",
+    "types": "./dist/index.d.ts"
   },
   "files": [
     "dist"
