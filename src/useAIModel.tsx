@@ -90,6 +90,7 @@ function useAIModel<D = string>(
   } = useGenerateObject(
     {
       model,
+      schema,
       ...prompt,
     },
     {
@@ -105,6 +106,7 @@ function useAIModel<D = string>(
   } = useStreamObject(
     {
       model,
+      schema,
       ...prompt,
     },
     {

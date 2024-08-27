@@ -19,6 +19,7 @@ export function useStreamObject(params: any, options?: Options) {
       params.prompt,
       JSON.stringify(params.messages),
     ],
+    // @ts-ignore
     queryFn: async () => {
       const { partialObjectStream, object } = await streamObject(params);
       for await (const partialObject of partialObjectStream) {
