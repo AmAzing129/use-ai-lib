@@ -1,6 +1,6 @@
 {
   "name": "use-ai-lib",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "A React hooks library for building AI-powered apps.",
   "type": "module",
   "source": "src/index.ts",
@@ -9,6 +9,9 @@
   "exports": {
     "default": "./dist/index.modern.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "microbundle --tsconfig tsconfig.build.json",
     "dev": "microbundle watch --no-sourcemap",
