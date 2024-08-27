@@ -1,8 +1,13 @@
 import type { LanguageModel, CoreMessage } from 'ai';
-import { generateText, streamText, streamObject, generateObject } from 'ai';
 import type { Schema, DeepPartial } from '@ai-sdk/ui-utils';
-import { useEffect, useState } from 'react';
 import { z } from 'zod';
+
+import {
+  useGenerateObject,
+  useStreamObject,
+  useGenerateText,
+  useStreamText,
+} from './queries';
 
 interface Options<D> extends Prompt {
   deps?: any[];
@@ -27,74 +32,67 @@ type Prompt = {
   messages?: Array<CoreMessage>;
 };
 
-export const useAIModel = <D = string,>(
+function useAIModel<D = string>(
   model: LanguageModel,
   options: Options<D> = {}
-) => {
-  const { schema, onSuccess, stream, deps, enabled, ...prompt } = options;
+) {
+  const {
+    schema,
+    onSuccess,
+    stream,
+    deps,
+    enabled = true,
+    ...prompt
+  } = options;
 
-  const [data, setData] = useState<D>();
+  const { text, refetch: fetchText } = useGenerateText(
+    {
+      model,
+      ...prompt,
+    },
+    {
+      enabled: !stream && !schema,
+    }
+  );
+
+  const { text: streamText, refetch: fetchStreamText } = useStreamText(
+    {
+      model,
+      ...prompt,
+    },
+    {
+      enabled: stream && !schema,
+    }
+  );
+
+  const { object, refetch: fetchObject } = useGenerateObject(
+    {
+      model,
+      ...prompt,
+    },
+    {
+      enabled: !stream && !!schema,
+    }
+  );
+
+  const { object: streamObject, refetch: fetchStreamObject } = useStreamObject(
+    {
+      model,
+      ...prompt,
+    },
+    {
+      enabled: stream && !!schema,
+    }
+  );
 
   // TODO: get model from context
 
   // TODO: add middleware if model is a request
 
-  useEffect(() => {
-    if (!enabled) {
-      return;
-    }
-
-    // No input
-    if (!prompt || (!prompt.prompt && !prompt.messages)) {
-      return;
-    }
-
-    if (schema) {
-      if (stream) {
-        streamObject({
-          model,
-          schema,
-          ...prompt,
-        }).then(async ({ partialObjectStream }) => {
-          for await (const partialObject of partialObjectStream) {
-            onSuccess?.(partialObject);
-          }
-        });
-      } else {
-        generateObject({
-          model,
-          schema,
-          ...prompt,
-        }).then(({ object }) => {
-          setData(object);
-          onSuccess?.(object);
-        });
-      }
-    } else {
-      if (stream) {
-        streamText({
-          model,
-          ...prompt,
-        }).then(async ({ textStream }) => {
-          for await (const textPart of textStream) {
-            onSuccess?.(textPart);
-          }
-        });
-      } else {
-        generateText({
-          model,
-          ...prompt,
-        }).then(({ text }) => {
-          // @ts-ignore FIXME
-          setData(text);
-          onSuccess?.(text);
-        });
-      }
-    }
-    // TODO handle deps re-render
-  }, [prompt.prompt, prompt.messages, enabled, stream, deps]);
-
   return {
-    data,
+    data: text ?? streamText ?? object ?? streamObject,
+    generate: fetchText ?? fetchStreamText ?? fetchObject ?? fetchStreamObject,
   };
-};
+}
+
+export { useAIModel };
