@@ -1,6 +1,6 @@
 {
   "name": "use-ai-lib",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.1",
   "description": "A React hooks library for building AI-powered apps.",
   "type": "module",
   "source": "src/index.ts",
@@ -12,7 +12,8 @@
   "scripts": {
     "build": "microbundle --tsconfig tsconfig.build.json",
     "dev": "microbundle watch --no-sourcemap",
-    "demo": "next dev"
+    "demo": "next dev",
+    "ci:publish": "pnpm publish -r"
   },
   "dependencies": {
     "@ai-sdk/ui-utils": "^0.0.39",
