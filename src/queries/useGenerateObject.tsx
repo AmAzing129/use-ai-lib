@@ -9,7 +9,12 @@ type Options = {
 
 export function useGenerateObject(params: any, options?: Options) {
   const query = useQuery<GenerateObjectResult<any>>({
-    queryKey: ['generateObject'],
+    queryKey: [
+      'generateObject',
+      params.system,
+      params.prompt,
+      JSON.stringify(params.messages),
+    ],
     queryFn: () => generateObject(params),
     ...options,
   });

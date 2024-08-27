@@ -12,11 +12,13 @@ export function useGenerateText(
   options?: Options
 ) {
   const query = useQuery<GenerateTextResult<any>>({
-    queryKey: ['generateText'],
-    queryFn: async (t) => {
-      console.log('t', t);
-      return generateText(params);
-    },
+    queryKey: [
+      'generateText',
+      params.system,
+      params.prompt,
+      JSON.stringify(params.messages),
+    ],
+    queryFn: async () => generateText(params),
     ...options,
   });
 
