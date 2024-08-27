@@ -23,6 +23,7 @@
   "devDependencies": {
     "@ai-sdk/openai": "^0.0.54",
     "@ant-design/pro-chat": "^1.15.2",
+    "@changesets/cli": "^2.27.7",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "antd": "^5.20.2",
