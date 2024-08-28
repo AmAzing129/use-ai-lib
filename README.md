@@ -5,8 +5,18 @@ A React hooks library for building AI-powered apps as simple as possible. Based 
 
 Tell the hook which model you're using, what the prompt is, stream or not, schema or not, and then get the data from AI. That's simple!
 ```js
-import { useAIModel } from 'use-ai-lib';
+import { useAIModel, AIModelProvider } from 'use-ai-lib';
 import { chromeai } from 'chrome-ai';
+
+// Use AIModelProvider to get the query client
+// or set your global model, custom client, etc.
+const yourApp = () => {
+  return (
+    <AIModelProvider model={chromeai()}>
+      <App />
+    </AIModelProvider>
+  );
+}
 
 // Generate text
 const { data } = useAIModel({
