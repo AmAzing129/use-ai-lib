@@ -17,6 +17,7 @@
     "build": "microbundle --tsconfig tsconfig.build.json",
     "dev": "microbundle watch --no-sourcemap --tsconfig tsconfig.build.json",
     "demo": "next dev",
+    "test": "vitest",
     "ci:publish": "pnpm publish -r"
   },
   "dependencies": {
@@ -31,14 +32,17 @@
     "@ai-sdk/openai": "^0.0.54",
     "@ant-design/pro-chat": "^1.15.2",
     "@changesets/cli": "^2.27.7",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "antd": "^5.20.2",
     "antd-style": "^3.6.2",
     "chrome-ai": "^1.11.1",
+    "jsdom": "^25.0.0",
     "microbundle": "^0.15.1",
     "next": "^14.2.7",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   },
   "repository": {
     "type": "git",
