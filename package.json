@@ -17,8 +17,9 @@
     "build": "microbundle --tsconfig tsconfig.build.json",
     "dev": "microbundle watch --no-sourcemap --tsconfig tsconfig.build.json",
     "demo": "next dev",
-    "test": "vitest",
-    "ci:publish": "pnpm publish -r"
+    "ci": "pnpm run test",
+    "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "test": "vitest"
   },
   "dependencies": {
     "react": "^18.3.1",
