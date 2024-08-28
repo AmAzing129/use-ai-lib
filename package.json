@@ -1,7 +1,7 @@
 {
   "name": "use-ai-lib",
-  "version": "0.0.1-alpha.5",
-  "description": "A React hooks library for building AI-powered apps.",
+  "version": "0.0.1",
+  "description": "A React hooks library for building AI-powered apps as simple as possible.",
   "type": "module",
   "source": "src/index.ts",
   "main": "./dist/index.umd.js",
@@ -15,11 +15,13 @@
   ],
   "scripts": {
     "build": "microbundle --tsconfig tsconfig.build.json",
-    "dev": "microbundle watch --no-sourcemap",
+    "dev": "microbundle watch --no-sourcemap --tsconfig tsconfig.build.json",
     "demo": "next dev",
     "ci:publish": "pnpm publish -r"
   },
   "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "@ai-sdk/ui-utils": "^0.0.39",
     "@tanstack/react-query": "^5.52.1",
     "ai": "^3.3.17",
@@ -36,8 +38,6 @@
     "chrome-ai": "^1.11.1",
     "microbundle": "^0.15.1",
     "next": "^14.2.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "typescript": "^5.5.4"
   },
   "repository": {

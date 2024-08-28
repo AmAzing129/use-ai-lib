@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { streamObject } from 'ai';
 import type { JSONValue } from 'ai';
-import { useEffect } from 'react';
 
 // use some of options
 type Options = {
@@ -10,15 +9,8 @@ type Options = {
 };
 
 export function useStreamObject(params: any, options?: Options) {
-  useEffect(() => {}, []);
-
   const query = useQuery<JSONValue>({
-    queryKey: [
-      'streamObject',
-      params.system,
-      params.prompt,
-      JSON.stringify(params.messages),
-    ],
+    queryKey: ['streamObject', JSON.stringify(params.messages)],
     // @ts-ignore
     queryFn: async () => {
       const { partialObjectStream, object } = await streamObject(params);

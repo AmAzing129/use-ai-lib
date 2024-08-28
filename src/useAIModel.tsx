@@ -11,12 +11,11 @@ import {
 import { useEffect, useMemo } from 'react';
 
 interface Options<D> extends Prompt {
-  deps?: any[];
   schema?: z.Schema<D, z.ZodTypeDef, D> | Schema<D>;
   stream?: boolean;
   /**
    * Do something when AI data is generated.
-   * Use this callback to get the stream data rather than 'data'.
+   * Use this callback to get the stream data rather than through 'data'.
    */
   onSuccess?: (data: DeepPartial<D> | string | D) => void | boolean;
 }
@@ -40,12 +39,21 @@ function useAIModel<D = string>(
   aiModel: LanguageModel,
   options: Options<D> = {}
 ) {
-  const { schema, onSuccess, stream, deps, ...prompt } = options;
+  const { schema, onSuccess, stream, ...prompt } = options;
 
   const { model: contextModel } = useModelContext();
+
   if (!aiModel && !contextModel) {
     throw new Error('Model is required');
   }
+
+  // Empty input is not allowed to pass to the moedel, or it will throw an error
+  const emptyInput =
+    !prompt ||
+    (!prompt.prompt && !prompt.messages) ||
+    (prompt.prompt && prompt.prompt.length === 0) ||
+    (prompt.messages && prompt.messages.length === 0);
+
   const model = aiModel ?? contextModel;
 
   // TODO: add middleware if model is a request
@@ -62,7 +70,7 @@ function useAIModel<D = string>(
       ...prompt,
     },
     {
-      enabled: !stream && !schema,
+      enabled: !stream && !schema && !emptyInput,
     }
   );
 
@@ -77,7 +85,7 @@ function useAIModel<D = string>(
       ...prompt,
     },
     {
-      enabled: stream && !schema,
+      enabled: !!stream && !schema && !emptyInput,
     }
   );
 
@@ -94,7 +102,7 @@ function useAIModel<D = string>(
       ...prompt,
     },
     {
-      enabled: !stream && !!schema,
+      enabled: !stream && !!schema && !emptyInput,
     }
   );
 
@@ -111,7 +119,7 @@ function useAIModel<D = string>(
     },
     {
       onSuccess,
-      enabled: stream && !!schema,
+      enabled: !!stream && !!schema && !emptyInput,
     }
   );
 

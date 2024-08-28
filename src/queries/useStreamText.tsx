@@ -12,12 +12,7 @@ export function useStreamText(
   options?: Options
 ) {
   const query = useQuery<StreamTextResult<any>>({
-    queryKey: [
-      'generateText',
-      params.system,
-      params.prompt,
-      JSON.stringify(params.messages),
-    ],
+    queryKey: ['generateText', params.prompt, JSON.stringify(params.messages)],
     queryFn: async () => streamText(params),
     ...options,
   });

@@ -28,6 +28,8 @@ function Home() {
     prompt: msg,
   });
 
+  console.log('data', data);
+
   return (
     <div
       style={{
@@ -43,8 +45,9 @@ function Home() {
           helloMessage={
             '欢迎使用 ProChat ，我是你的专属机器人，这是我们的 Github：[ProChat](https://github.com/ant-design/pro-chat)'
           }
-          // request={async (messages) => {
-          // }}
+          request={async (messages) => {
+            setMsg(messages[messages.length - 1].content);
+          }}
         />
       )}
     </div>

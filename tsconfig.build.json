@@ -2,6 +2,10 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ESNext",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    // https://github.com/developit/microbundle/issues/857
+    "jsxFactory": "",
+    "jsxFragmentFactory": ""
   }
 }
