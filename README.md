@@ -1,5 +1,5 @@
 # use-ai-lib
-A React hooks library for building AI-powered apps.
+A React hooks library for building AI-powered apps as simple as possible. Based on [@tanstack/react-query](https://github.com/tanstack/query) and vercel [ai](https://github.com/vercel/ai).
 
 ## Examples
 
@@ -8,15 +8,25 @@ Tell the hook which model you're using, what the prompt is, stream or not, schem
 import { useAIModel } from 'use-ai-lib';
 import { chromeai } from 'chrome-ai';
 
+// Generate text
 const { data } = useAIModel({
   model: chromeai(),
   prompt: 'hello',
+})
+
+// Use stream and schema
+useAIModel({
+  model: chromeai(),
+  messages,
+  schema,
   stream: true,
-  onSuccess: (data) => { // doSomething },
+  onSuccess: (chunk) => { // doSomething }
 })
 ```
 
-## The idea
+
+
+## The basic idea
 
 Look at this awesome [smart-form](https://try-chromeai.vercel.app/smart-form) demo, [@Shinji-Li](https://github.com/ONLY-yours) and I think maybe we can create some UI components with built-in AI. Developers use <SmartForm> directly and users can benefit from it.
 
