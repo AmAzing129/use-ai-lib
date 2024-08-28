@@ -1,5 +1,7 @@
 # use-ai-lib
-A React hooks library for building AI-powered apps as simple as possible. Based on [@tanstack/react-query](https://github.com/tanstack/query) and vercel [ai](https://github.com/vercel/ai).
+A React hooks library for building AI-powered apps as simple as possible.
+
+Built on top of [@tanstack/react-query](https://github.com/tanstack/query) and vercel [ai](https://github.com/vercel/ai).
 
 ## Examples
 
