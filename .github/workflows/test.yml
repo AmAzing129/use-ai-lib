@@ -1,0 +1,25 @@
+name: Test CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.0.0
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: 20.x
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: lint & Test
+        run: pnpm run ci
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
