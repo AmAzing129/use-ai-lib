@@ -21,17 +21,17 @@
     "test": "vitest"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@ai-sdk/ui-utils": "^0.0.39",
     "@tanstack/react-query": "^5.52.1",
     "ai": "^3.3.17",
-    "zod": "^3.23.8"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@ai-sdk/openai": "^0.0.54",
+    "@ai-sdk/ui-utils": "^0.0.39",
     "@ant-design/pro-chat": "^1.15.2",
     "@changesets/cli": "^2.27.7",
+    "@opentelemetry/api": "^1.9.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
@@ -42,7 +42,8 @@
     "microbundle": "^0.15.1",
     "next": "^14.2.7",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.5"
+    "vitest": "^2.0.5",
+    "zod": "^3.23.8"
   },
   "repository": {
     "type": "git",

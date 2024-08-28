@@ -1,6 +1,6 @@
-import type { LanguageModel, CoreMessage } from 'ai';
+import type { LanguageModel } from 'ai';
 import type { Schema, DeepPartial } from '@ai-sdk/ui-utils';
-import { z } from 'zod';
+import type { ZodTypeDef, Schema as zSchema } from 'zod';
 import { useModelContext } from './provider';
 import {
   useGenerateObject,
@@ -9,9 +9,10 @@ import {
   useStreamText,
 } from './queries';
 import { useEffect, useMemo } from 'react';
+import { Prompt } from './types';
 
 interface Options<D> extends Prompt {
-  schema?: z.Schema<D, z.ZodTypeDef, D> | Schema<D>;
+  schema?: zSchema<D, ZodTypeDef, D> | Schema<D>;
   stream?: boolean;
   /**
    * Do something when AI data is generated.
@@ -19,21 +20,6 @@ interface Options<D> extends Prompt {
    */
   onSuccess?: (data: DeepPartial<D> | string | D) => void | boolean;
 }
-
-type Prompt = {
-  /**
-    System message to include in the prompt. Can be used with `prompt` or `messages`.
-   */
-  system?: string;
-  /**
-    A simple text prompt. You can either use `prompt` or `messages` but not both.
-   */
-  prompt?: string;
-  /**
-    A list of messsages. You can either use `prompt` or `messages` but not both.
-   */
-  messages?: Array<CoreMessage>;
-};
 
 function useAIModel<D = string>(
   aiModel: LanguageModel,
@@ -95,10 +81,10 @@ function useAIModel<D = string>(
     isFetching: isObjectFetching,
     isError: isObjectError,
     error: objectError,
-  } = useGenerateObject(
+  } = useGenerateObject<D>(
     {
       model,
-      schema,
+      schema: schema!,
       ...prompt,
     },
     {
@@ -114,7 +100,7 @@ function useAIModel<D = string>(
   } = useStreamObject(
     {
       model,
-      schema,
+      schema: schema!,
       ...prompt,
     },
     {
