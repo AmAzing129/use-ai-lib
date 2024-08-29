@@ -1,21 +1,22 @@
-import { useQuery } from '@tanstack/react-query';
-import { generateText } from 'ai';
-import type { GenerateTextResult } from 'ai';
+import { useQuery } from "@tanstack/react-query";
+import { generateText } from "ai";
+import type { GenerateTextResult } from "ai";
 
 // use some of options
 type Options = {
-  enabled?: boolean;
+	enabled?: boolean;
 };
 
 export function useGenerateText(
-  params: Parameters<typeof generateText>[0],
-  options?: Options
+	params: Parameters<typeof generateText>[0],
+	options?: Options,
 ) {
-  const query = useQuery<GenerateTextResult<any>>({
-    queryKey: ['generateText', params.prompt, JSON.stringify(params.messages)],
-    queryFn: async () => generateText(params),
-    ...options,
-  });
+	// biome-ignore lint/suspicious/noExplicitAny: TODO
+	const query = useQuery<GenerateTextResult<any>>({
+		queryKey: ["generateText", params.prompt, JSON.stringify(params.messages)],
+		queryFn: async () => generateText(params),
+		...options,
+	});
 
-  return { ...query, text: query.data?.text };
+	return { ...query, text: query.data?.text };
 }

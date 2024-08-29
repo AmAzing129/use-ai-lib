@@ -1,41 +1,43 @@
-import { useQuery } from '@tanstack/react-query';
-import { streamObject } from 'ai';
-import type { LanguageModel } from 'ai';
-import { CallSettings, Prompt, TelemetrySettings } from '../types';
-import type { Schema } from '@ai-sdk/ui-utils';
-import type { ZodTypeDef, Schema as zSchema } from 'zod';
+import type { Schema } from "@ai-sdk/ui-utils";
+import { useQuery } from "@tanstack/react-query";
+import { streamObject } from "ai";
+import type { LanguageModel } from "ai";
+import type { ZodTypeDef, Schema as zSchema } from "zod";
+import type { CallSettings, Prompt, TelemetrySettings } from "../types";
 
 // use some of options
 type Options = {
-  enabled?: boolean;
-  onSuccess?: (data: any) => void;
+	enabled?: boolean;
+	// biome-ignore lint/suspicious/noExplicitAny: TODO
+	onSuccess?: (data: any) => void;
 };
 
 // There are three overloads, use this one currently.
-type StreamObjectParams<OBJECT> = Omit<CallSettings, 'stopSequences'> &
-  Prompt & {
-    output?: 'object' | undefined;
-    /**
+type StreamObjectParams<OBJECT> = Omit<CallSettings, "stopSequences"> &
+	Prompt & {
+		output?: "object" | undefined;
+		/**
 The language model to use.
  */
-    model: LanguageModel;
-    /**
+		model: LanguageModel;
+		/**
 The schema of the object that the model should generate.
 */
-    schema: zSchema<OBJECT, ZodTypeDef, any> | Schema<OBJECT>;
-    /**
+		// biome-ignore lint/suspicious/noExplicitAny: TODO
+		schema: zSchema<OBJECT, ZodTypeDef, any> | Schema<OBJECT>;
+		/**
 Optional name of the output that should be generated.
 Used by some providers for additional LLM guidance, e.g.
 via tool or schema name.
  */
-    schemaName?: string;
-    /**
+		schemaName?: string;
+		/**
 Optional description of the output that should be generated.
 Used by some providers for additional LLM guidance, e.g.
 via tool or schema description.
 */
-    schemaDescription?: string;
-    /**
+		schemaDescription?: string;
+		/**
 The mode to use for object generation.
 
 The schema is converted in a JSON schema and used in one of the following ways
@@ -48,33 +50,33 @@ Please note that most providers do not support all modes.
 
 Default and recommended: 'auto' (best mode for the model).
  */
-    mode?: 'auto' | 'json' | 'tool';
-    /**
+		mode?: "auto" | "json" | "tool";
+		/**
 Optional telemetry configuration (experimental).
  */
-    experimental_telemetry?: TelemetrySettings;
-    /**
+		experimental_telemetry?: TelemetrySettings;
+		/**
 Callback that is called when the LLM response and the final object validation are finished.
  */
-    // TODO
-    // onFinish?: OnFinishCallback<OBJECT>;
-  };
+		// TODO
+		// onFinish?: OnFinishCallback<OBJECT>;
+	};
 
 export function useStreamObject<OBJECT>(
-  params: StreamObjectParams<OBJECT>,
-  options?: Options
+	params: StreamObjectParams<OBJECT>,
+	options?: Options,
 ) {
-  const query = useQuery<OBJECT>({
-    queryKey: ['streamObject', JSON.stringify(params.messages)],
-    queryFn: async () => {
-      const { partialObjectStream, object } = await streamObject(params);
-      for await (const partialObject of partialObjectStream) {
-        options?.onSuccess?.(partialObject);
-      }
-      return object;
-    },
-    ...options,
-  });
+	const query = useQuery<OBJECT>({
+		queryKey: ["streamObject", JSON.stringify(params.messages)],
+		queryFn: async () => {
+			const { partialObjectStream, object } = await streamObject(params);
+			for await (const partialObject of partialObjectStream) {
+				options?.onSuccess?.(partialObject);
+			}
+			return object;
+		},
+		...options,
+	});
 
-  return { ...query };
+	return { ...query };
 }
