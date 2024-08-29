@@ -5,6 +5,7 @@ A React hooks library for building AI-powered apps as simple as possible.
 
 - [x] Support different language models by vercel [ai](https://github.com/vercel/ai).
 - [x] Request status control by [@tanstack/react-query](https://github.com/tanstack/query).
+- [x] Schema declaration and validation by [zod](https://github.com/colinhacks/zod)
 - [x] Comprehensive type hints.
 - [ ] Conversation development out-of-the-box.
 - [ ] Support custom AI requests.
