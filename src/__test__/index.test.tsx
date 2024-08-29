@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useModelContext } from "../provider";
-import { useAIModel } from "../useAIModel";
+import { useAIModel } from "../hooks/useAIModel";
 
 // Mock the dependencies
 vi.mock("../provider", () => ({
