@@ -11,27 +11,64 @@ import {
 } from "./queries";
 import type { Prompt } from "./types";
 
-interface Options<D> extends Prompt {
-	schema?: zSchema<D, ZodTypeDef, D> | Schema<D>;
+interface Options<Data> extends Prompt {
+	// TODO: handle messages
+	// /**
+	//  * A simple text prompt. It's required or meaningless.
+	//  */
+	// prompt: string;
+	// /**
+	//  * System message to include in the prompt.
+	//  */
+	// system?: string;
+	/**
+	 * The schema of the object that the model should generate. Use 'zod' to declare.
+	 */
+	schema?: zSchema<Data, ZodTypeDef, Data> | Schema<Data>;
+	/**
+	 * Streams the output or not.
+	 */
 	stream?: boolean;
 	/**
 	 * Do something when AI data is generated.
-	 * Use this callback to get the stream data rather than through 'data'.
+	 * Use this callback to get the data during streaming rather than through the final 'data'.
 	 */
-	onSuccess?: (data: DeepPartial<D> | string | D) => void;
+	onSuccess?: (data: DeepPartial<Data> | string | Data) => void;
 }
 
-function useAIModel<D = string>(
-	aiModel: LanguageModel,
-	options: Options<D> = {},
-) {
-	const { schema, onSuccess, stream, ...prompt } = options;
+interface UseAIModel<D> {
+	data: D;
+	// biome-ignore lint/suspicious/noExplicitAny: TODO
+	generate: any;
+	isFetching: boolean;
+	isError: boolean;
+	error: Error | null;
+}
 
+export function useAIModel<D>(options: Options<D>): UseAIModel<D>;
+export function useAIModel<D>(
+	aiModel: LanguageModel,
+	options: Options<D>,
+): UseAIModel<D>;
+export function useAIModel<D = string>(
+	aiModel: unknown,
+	modelOptions?: Options<D>,
+) {
 	const { model: contextModel } = useModelContext();
 
-	if (!aiModel && !contextModel) {
+	if (!(aiModel as LanguageModel).modelId && !contextModel) {
 		throw new Error("Model is required");
 	}
+
+	const model = (aiModel as LanguageModel).modelId
+		? (aiModel as LanguageModel)
+		: contextModel;
+
+	const options = (aiModel as LanguageModel).modelId
+		? modelOptions
+		: (aiModel as Options<D>);
+
+	const { schema, onSuccess, stream, ...prompt } = options;
 
 	// Empty input is not allowed to pass to the moedel, or it will throw an error
 	const emptyInput =
@@ -39,10 +76,6 @@ function useAIModel<D = string>(
 		(!prompt.prompt && !prompt.messages) ||
 		(prompt.prompt && prompt.prompt.length === 0) ||
 		(prompt.messages && prompt.messages.length === 0);
-
-	const model = aiModel ?? contextModel;
-
-	// TODO: add middleware if model is a request
 
 	const {
 		text,
@@ -133,5 +166,3 @@ function useAIModel<D = string>(
 		error: textError ?? streamTextError ?? objectError ?? streamObjectError,
 	};
 }
-
-export { useAIModel };

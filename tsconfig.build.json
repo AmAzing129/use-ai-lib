@@ -3,7 +3,6 @@
     "module": "ESNext",
     "target": "ESNext",
     "allowSyntheticDefaultImports": true,
-    "strict": true,
     "jsx": "react-jsx",
     // https://github.com/developit/microbundle/issues/857
     "jsxFactory": "",

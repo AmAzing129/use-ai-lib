@@ -51,7 +51,7 @@ describe("useAIModel", () => {
 	it("throws an error if no model is provided", () => {
 		(useModelContext as any).mockReturnValue({ model: null });
 
-		const { result } = renderHook(() => useAIModel(null as any));
+		const { result } = renderHook(() => useAIModel({}));
 
 		expect(result.error).toEqual(new Error("Model is required"));
 	});
