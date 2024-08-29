@@ -6,12 +6,12 @@ A React hooks library for building AI-powered apps as simple as possible.
 
 - [x] Build on top of [ai](https://github.com/vercel/ai).
 - [x] Manage generating state by [@tanstack/react-query](https://github.com/tanstack/query).
-- [x] Schema declaration and validation by [zod](https://github.com/colinhacks/zod)
+- [x] Schema declaration and validation by [zod](https://github.com/colinhacks/zod).
 - [ ] Support custom AI requests.
 
-Tell the hook which model you're using, what the prompt is, stream or not, schema or not, and then get the data generated from AI.
+Most important, it's simple and out-of-the-box.
 
-That's simple!
+No API. Just tell the hook which model you're using, what the prompt is, stream or not, schema or not, and then get the data generated from AI.
 
 ## Examples
 
