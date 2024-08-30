@@ -4,8 +4,7 @@
   "description": "A React hooks library for building AI-powered apps as simple as possible.",
   "type": "module",
   "source": "src/index.ts",
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.module.js",
+  "main": "./dist/index.cjs",
   "exports": {
     "types": "./dist/index.d.ts",
     "default": "./dist/index.modern.js"
@@ -14,8 +13,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "microbundle --tsconfig tsconfig.build.json",
-    "dev": "microbundle watch --no-sourcemap --tsconfig tsconfig.build.json",
+    "build": "microbundle --no-sourcemap --tsconfig tsconfig.build.json --format modern,cjs",
+    "dev": "microbundle watch --no-sourcemap --tsconfig tsconfig.build.json --format modern,cjs",
     "demo": "next dev",
     "ci": "pnpm run test",
     "test": "vitest",
