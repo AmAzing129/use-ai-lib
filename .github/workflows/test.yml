@@ -1,4 +1,4 @@
-name: Test CI
+name: CI
 on: [push, pull_request]
 jobs:
   test:
@@ -14,11 +14,12 @@ jobs:
         uses: actions/setup-node@v4.0.3
         with:
           node-version: 20.x
+          cache: 'pnpm'
 
       - name: Install deps
         run: pnpm install
 
-      - name: lint & Test
+      - name: pnpm run ci
         run: pnpm run ci
 
       - name: Upload coverage to Codecov
