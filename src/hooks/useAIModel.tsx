@@ -146,14 +146,14 @@ export function useAIModel<D = string>(
 	return {
 		data,
 		regenerate:
-			fetchText ?? fetchStreamText ?? fetchObject ?? fetchStreamObject,
+			fetchText || fetchStreamText || fetchObject || fetchStreamObject,
 		isGenerating:
-			isTextFetching ??
-			isStreamTextFetching ??
-			isObjectFetching ??
+			isTextFetching ||
+			isStreamTextFetching ||
+			isObjectFetching ||
 			isStreamObjectFetching,
 		isError:
-			isTextError ?? isStreamTextError ?? isObjectError ?? isStreamObjectError,
-		error: textError ?? streamTextError ?? objectError ?? streamObjectError,
+			isTextError || isStreamTextError || isObjectError || isStreamObjectError,
+		error: textError || streamTextError || objectError || streamObjectError,
 	};
 }

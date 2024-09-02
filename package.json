@@ -1,6 +1,6 @@
 {
   "name": "use-ai-lib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React hooks library for building AI-powered apps as simple as possible.",
   "type": "module",
   "source": "src/index.ts",
@@ -19,13 +19,14 @@
     "ci": "pnpm run test",
     "test": "vitest",
     "lint": "biome check src/**",
-    "lint:fix": "biome check --write src/**"
+    "lint:fix": "biome check --write src/**",
+    "changeset": "changeset",
+    "release:prepare": "pnpm run lint && pnpm run ci && pnpm run build",
+    "release": "pnpm run release:prepare && changeset version && changeset publish"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.53.1",
-    "ai": "^3.3.21",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "ai": "^3.3.21"
   },
   "devDependencies": {
     "@ai-sdk/openai": "^0.0.54",
@@ -46,6 +47,10 @@
     "typescript": "^5.5.4",
     "vitest": "^2.0.5",
     "zod": "^3.23.8"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "repository": {
     "type": "git",
