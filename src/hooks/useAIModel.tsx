@@ -1,7 +1,7 @@
-import type { DeepPartial, Schema } from "@ai-sdk/ui-utils";
+import type { DeepPartial } from "@ai-sdk/ui-utils";
 import type { LanguageModel } from "ai";
 import { useEffect, useMemo } from "react";
-import type { ZodTypeDef, Schema as zSchema } from "zod";
+import type { z } from "zod";
 import { useModelContext } from "../provider";
 import {
 	useGenerateObject,
@@ -15,7 +15,8 @@ interface Options<OBJECT> extends Prompt {
 	/**
 	 * The schema of the object that the model should generate. Use 'zod' to declare.
 	 */
-	schema?: zSchema<OBJECT, ZodTypeDef, OBJECT> | Schema<OBJECT>;
+	// biome-ignore lint/suspicious/noExplicitAny:
+	schema?: z.Schema<OBJECT, z.ZodTypeDef, any>;
 	/**
 	 * Streams the output or not.
 	 */
@@ -24,7 +25,9 @@ interface Options<OBJECT> extends Prompt {
 	 * Do something when AI data is generated.
 	 * Use this callback to get the data during streaming rather than through the final 'data'.
 	 */
-	onSuccess?: (data: string | DeepPartial<OBJECT> | OBJECT) => void;
+	onSuccess?: (
+		data: OBJECT extends string ? string : DeepPartial<OBJECT> | OBJECT,
+	) => void;
 }
 
 interface UseAIModel<D> {
@@ -94,6 +97,7 @@ export function useAIModel<D = string>(
 			...prompt,
 		},
 		{
+			onSuccess: onSuccess as (data: string) => void,
 			enabled: !!stream && !schema && !emptyInput,
 		},
 	);
@@ -104,7 +108,7 @@ export function useAIModel<D = string>(
 		isFetching: isObjectFetching,
 		isError: isObjectError,
 		error: objectError,
-	} = useGenerateObject<D>(
+	} = useGenerateObject<z.infer<typeof schema>>(
 		{
 			model,
 			// biome-ignore lint/style/noNonNullAssertion:
@@ -121,7 +125,7 @@ export function useAIModel<D = string>(
 		isFetching: isStreamObjectFetching,
 		isError: isStreamObjectError,
 		error: streamObjectError,
-	} = useStreamObject(
+	} = useStreamObject<z.infer<typeof schema>>(
 		{
 			model,
 			// biome-ignore lint/style/noNonNullAssertion:
@@ -129,7 +133,7 @@ export function useAIModel<D = string>(
 			...prompt,
 		},
 		{
-			onSuccess,
+			onSuccess: onSuccess as (data: DeepPartial<D> | D) => void,
 			enabled: !!stream && !!schema && !emptyInput,
 		},
 	);
@@ -140,7 +144,7 @@ export function useAIModel<D = string>(
 	// biome-ignore lint: onSuccess usually won't change
 	useEffect(() => {
 		if (!data) return;
-		onSuccess?.(data);
+		(onSuccess as (data: string | D) => void)?.(data);
 	}, [data]);
 
 	return {

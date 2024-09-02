@@ -1,4 +1,4 @@
-import type { Schema } from "@ai-sdk/ui-utils";
+import type { DeepPartial } from "@ai-sdk/ui-utils";
 import { useQuery } from "@tanstack/react-query";
 import { streamObject } from "ai";
 import type { LanguageModel } from "ai";
@@ -6,10 +6,9 @@ import type { ZodTypeDef, Schema as zSchema } from "zod";
 import type { CallSettings, Prompt, TelemetrySettings } from "../types";
 
 // use some of options
-type Options = {
+type Options<OBJECT> = {
 	enabled?: boolean;
-	// biome-ignore lint/suspicious/noExplicitAny: TODO
-	onSuccess?: (data: any) => void;
+	onSuccess?: (data: DeepPartial<OBJECT> | OBJECT) => void;
 };
 
 // There are three overloads, use this one currently.
@@ -24,7 +23,7 @@ The language model to use.
 The schema of the object that the model should generate.
 */
 		// biome-ignore lint/suspicious/noExplicitAny: TODO
-		schema: zSchema<OBJECT, ZodTypeDef, any> | Schema<OBJECT>;
+		schema: zSchema<OBJECT, ZodTypeDef, any>;
 		/**
 Optional name of the output that should be generated.
 Used by some providers for additional LLM guidance, e.g.
@@ -64,7 +63,7 @@ Callback that is called when the LLM response and the final object validation ar
 
 export function useStreamObject<OBJECT>(
 	params: StreamObjectParams<OBJECT>,
-	options?: Options,
+	options?: Options<OBJECT>,
 ) {
 	const query = useQuery<OBJECT>({
 		queryKey: ["streamObject", JSON.stringify(params.messages)],
