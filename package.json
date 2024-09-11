@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@ai-sdk/openai": "^0.0.54",
-    "@ai-sdk/ui-utils": "^0.0.40",
+    "@ai-sdk/ui-utils": "^0.0.41",
     "@ant-design/pro-chat": "^1.15.2",
     "@biomejs/biome": "1.8.3",
     "@changesets/cli": "^2.27.7",
