@@ -41,7 +41,7 @@
     "antd": "^5.20.6",
     "antd-style": "^3.6.2",
     "chrome-ai": "^1.11.1",
-    "jsdom": "^25.0.0",
+    "jsdom": "^25.0.1",
     "microbundle": "^0.15.1",
     "next": "^14.2.9",
     "typescript": "^5.5.4",
