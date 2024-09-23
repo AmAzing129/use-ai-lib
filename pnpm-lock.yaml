@@ -29,7 +29,7 @@ importers:
         version: 0.0.41(zod@3.23.8)
       '@ant-design/pro-chat':
         specifier: ^1.15.2
-        version: 1.15.2(@types/react@18.3.5)(antd-style@3.6.2(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)
+        version: 1.15.2(@types/react@18.3.5)(antd-style@3.6.3(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)
       '@biomejs/biome':
         specifier: 1.8.3
         version: 1.8.3
@@ -52,8 +52,8 @@ importers:
         specifier: ^5.20.6
         version: 5.20.6
       antd-style:
-        specifier: ^3.6.2
-        version: 3.6.2(@types/react@18.3.5)(antd@5.20.6)
+        specifier: ^3.6.3
+        version: 3.6.3(@types/react@18.3.5)(antd@5.20.6)
       chrome-ai:
         specifier: ^1.11.1
         version: 1.11.1
@@ -1854,8 +1854,8 @@ packages:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
     engines: {node: '>=8'}
 
-  antd-style@3.6.2:
-    resolution: {integrity: sha512-p6tRV63+U9yp3T3DB4ope1Xs3VdkhNsPD+yiZMJnR57dclPQPtrNnrGBmdGwjWYP1HlzB1XS4JHqFAyMjvObHA==}
+  antd-style@3.6.3:
+    resolution: {integrity: sha512-Rxt93D7axfV5c9XqzeE0ZG8stIbFdXfyuZtgnWnh1/FR04sKayrmu4YnotEyueq9e77vziU8vizq+qRbWZjCqg==}
     peerDependencies:
       antd: '>=5.8.1'
       react: '>=18'
@@ -5025,15 +5025,15 @@ snapshots:
       classnames: 2.5.1
       rc-util: 5.43.0
 
-  '@ant-design/pro-chat@1.15.2(@types/react@18.3.5)(antd-style@3.6.2(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)':
+  '@ant-design/pro-chat@1.15.2(@types/react@18.3.5)(antd-style@3.6.3(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)':
     dependencies:
       '@ant-design/icons': 5.4.0
-      '@ant-design/pro-editor': 1.3.0(@emotion/react@11.13.3(@types/react@18.3.5))(@types/react@18.3.5)(antd-style@3.6.2(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)
+      '@ant-design/pro-editor': 1.3.0(@emotion/react@11.13.3(@types/react@18.3.5))(@types/react@18.3.5)(antd-style@3.6.3(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)
       '@babel/runtime': 7.25.4
       '@emotion/react': 11.13.3(@types/react@18.3.5)
       '@testing-library/jest-dom': 6.5.0
       antd: 5.20.6
-      antd-style: 3.6.2(@types/react@18.3.5)(antd@5.20.6)
+      antd-style: 3.6.3(@types/react@18.3.5)(antd@5.20.6)
       copy-to-clipboard: 3.3.3
       dayjs: 1.11.13
       emoji-regex: 10.3.0
@@ -5055,7 +5055,7 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@ant-design/pro-editor@1.3.0(@emotion/react@11.13.3(@types/react@18.3.5))(@types/react@18.3.5)(antd-style@3.6.2(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)':
+  '@ant-design/pro-editor@1.3.0(@emotion/react@11.13.3(@types/react@18.3.5))(@types/react@18.3.5)(antd-style@3.6.3(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)':
     dependencies:
       '@ant-design/icons': 5.4.0
       '@babel/runtime': 7.25.4
@@ -5067,7 +5067,7 @@ snapshots:
       '@floating-ui/react': 0.24.8
       ahooks: 3.7.8
       antd: 5.20.6
-      antd-style: 3.6.2(@types/react@18.3.5)(antd@5.20.6)
+      antd-style: 3.6.3(@types/react@18.3.5)(antd@5.20.6)
       classnames: 2.5.1
       color: 4.2.3
       copy-to-clipboard: 3.3.3
@@ -7043,7 +7043,7 @@ snapshots:
     dependencies:
       color-convert: 2.0.1
 
-  antd-style@3.6.2(@types/react@18.3.5)(antd@5.20.6):
+  antd-style@3.6.3(@types/react@18.3.5)(antd@5.20.6):
     dependencies:
       '@ant-design/cssinjs': 1.21.1
       '@babel/runtime': 7.25.4
