@@ -25,8 +25,8 @@ importers:
         specifier: ^0.0.54
         version: 0.0.54(zod@3.23.8)
       '@ai-sdk/ui-utils':
-        specifier: ^0.0.41
-        version: 0.0.41(zod@3.23.8)
+        specifier: ^0.0.44
+        version: 0.0.44(zod@3.23.8)
       '@ant-design/pro-chat':
         specifier: ^1.15.2
         version: 1.15.2(@types/react@18.3.5)(antd-style@3.6.2(@types/react@18.3.5)(antd@5.20.6))(antd@5.20.6)
@@ -105,6 +105,15 @@ packages:
       zod:
         optional: true
 
+  '@ai-sdk/provider-utils@1.0.19':
+    resolution: {integrity: sha512-p02Fq5Mnc8T6nwRBN1Iaou8YXvN1sDS6hbmJaD5UaRbXjizbh+8rpFS/o7jqAHTwf3uHCDitP3pnODyHdc/CDQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
   '@ai-sdk/provider@0.0.21':
     resolution: {integrity: sha512-9j95uaPRxwYkzQdkl4XO/MmWWW5c5vcVSXtqvALpD9SMB9fzH46dO3UN4VbOJR2J3Z84CZAqgZu5tNlkptT9qQ==}
     engines: {node: '>=18'}
@@ -149,6 +158,15 @@ packages:
 
   '@ai-sdk/ui-utils@0.0.41':
     resolution: {integrity: sha512-I0trJKWxVG8hXeG0MvKqLG54fZjdeGjXvcVZocaSnWMBhl9lpTQxrqAR6ZsQMFDXs5DbvXoKtQs488qu2Bzaiw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
+  '@ai-sdk/ui-utils@0.0.44':
+    resolution: {integrity: sha512-0qiyun/n5zqJzQs/WfQT86dZE5DiDhSHJc7b7ZGLYvNMztHkRQmak2zUCZP4IyGVZEicyEPQK6NEEpBgkmd3Dg==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.0.0
@@ -4929,6 +4947,15 @@ snapshots:
     optionalDependencies:
       zod: 3.23.8
 
+  '@ai-sdk/provider-utils@1.0.19(zod@3.23.8)':
+    dependencies:
+      '@ai-sdk/provider': 0.0.23
+      eventsource-parser: 1.1.2
+      nanoid: 3.3.6
+      secure-json-parse: 2.7.0
+    optionalDependencies:
+      zod: 3.23.8
+
   '@ai-sdk/provider@0.0.21':
     dependencies:
       json-schema: 0.4.0
@@ -4970,6 +4997,16 @@ snapshots:
     dependencies:
       '@ai-sdk/provider': 0.0.23
       '@ai-sdk/provider-utils': 1.0.18(zod@3.23.8)
+      json-schema: 0.4.0
+      secure-json-parse: 2.7.0
+      zod-to-json-schema: 3.23.2(zod@3.23.8)
+    optionalDependencies:
+      zod: 3.23.8
+
+  '@ai-sdk/ui-utils@0.0.44(zod@3.23.8)':
+    dependencies:
+      '@ai-sdk/provider': 0.0.23
+      '@ai-sdk/provider-utils': 1.0.19(zod@3.23.8)
       json-schema: 0.4.0
       secure-json-parse: 2.7.0
       zod-to-json-schema: 3.23.2(zod@3.23.8)
