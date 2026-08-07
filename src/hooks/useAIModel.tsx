@@ -121,6 +121,7 @@ export function useAIModel<D = string>(
 	);
 
 	const {
+		data: streamData,
 		refetch: fetchStreamObject,
 		isFetching: isStreamObjectFetching,
 		isError: isStreamObjectError,
@@ -138,8 +139,7 @@ export function useAIModel<D = string>(
 		},
 	);
 
-	// TODO: figure out a great way to resolve stream data
-	const data = useMemo(() => text ?? object, [text, object]);
+	const data = useMemo(() => text ?? object ?? streamData, [text, object, streamData]);
 
 	// biome-ignore lint: onSuccess usually won't change
 	useEffect(() => {
