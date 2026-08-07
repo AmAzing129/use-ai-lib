@@ -72,7 +72,7 @@ export function useStreamObject<OBJECT>(
 			for await (const partialObject of partialObjectStream) {
 				options?.onSuccess?.(partialObject);
 			}
-			return object;
+			return await object;
 		},
 		...options,
 	});
